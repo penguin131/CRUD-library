@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="MainPageForm" type="myApp.controllers.MainPageForm"/>
+        <form-bean name="EditBookForm" type="myApp.controllers.EditBookForm"/>
+        <form-bean name="AddBookForm" type="myApp.controllers.AddBookForm"/>
+    </form-beans>
+
+    <action-mappings>
+        <action path="/Main"
+                name="MainPageForm"
+                type="myApp.controllers.MainPageAction">
+            <forward name="main" path="/index.jsp"/>
+        </action>
+
+        <action path="/EditBook"
+                name="EditBookForm"
+                type="myApp.controllers.EditBookAction">
+            <forward name="success" path="/book.jsp"/>
+            <forward name="fail" path="/fail.jsp"/>
+        </action>
+
+        <action input="/newBook.jsp"
+                path="/AddBook"
+                name="AddBookForm"
+                type="myApp.controllers.AddBookAction">
+            <forward name="add" path="/success.jsp"/>
+        </action>
+    </action-mappings>
+
+    <message-resources parameter="ApplicationResources" />
+</struts-config>
