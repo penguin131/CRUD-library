@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 /**
  * read config.xml from root directory and save params
  */
+
 public class DbConfiguration {
     static {
         File file = new File("config.xml");

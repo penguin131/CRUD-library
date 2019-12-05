@@ -6,31 +6,56 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="MainPageForm" type="myApp.controllers.MainPageForm"/>
-        <form-bean name="EditBookForm" type="myApp.controllers.EditBookForm"/>
-        <form-bean name="AddBookForm" type="myApp.controllers.AddBookForm"/>
+        <form-bean name="MainPageForm" type="myApp.controllers.action.MainPageForm"/>
+        <form-bean name="EditBookForm" type="myApp.controllers.form.EditBookForm"/>
+        <form-bean name="AddBookForm" type="myApp.controllers.form.AddBookForm"/>
+        <form-bean name="AddAuthorForm" type="myApp.controllers.form.AddAuthorForm"/>
+        <form-bean name="AddPublishingForm" type="myApp.controllers.form.AddPublishingForm"/>
+        <form-bean name="DeleteBookForm" type="myApp.controllers.form.DeleteBookForm"/>
     </form-beans>
 
     <action-mappings>
         <action path="/Main"
                 name="MainPageForm"
-                type="myApp.controllers.MainPageAction">
+                type="myApp.controllers.form.MainPageAction">
             <forward name="main" path="/index.jsp"/>
         </action>
 
-        <action path="/EditBook"
+        <action input="/book.jsp"
+                path="/EditBook"
                 name="EditBookForm"
-                type="myApp.controllers.EditBookAction">
-            <forward name="success" path="/book.jsp"/>
-            <forward name="fail" path="/fail.jsp"/>
+                type="myApp.controllers.action.EditBookAction">
+            <forward name="edit" path="/success.jsp"/>
         </action>
 
         <action input="/newBook.jsp"
                 path="/AddBook"
                 name="AddBookForm"
-                type="myApp.controllers.AddBookAction">
+                type="myApp.controllers.action.AddBookAction">
             <forward name="add" path="/success.jsp"/>
         </action>
+
+        <action input="/newAuthor.jsp"
+                path="/AddAuthor"
+                name="AddAuthorForm"
+                type="myApp.controllers.action.AddAuthorAction">
+            <forward name="add" path="/success.jsp"/>
+        </action>
+
+        <action input="/newPublishing.jsp"
+                path="/AddPublishing"
+                name="AddPublishingForm"
+                type="myApp.controllers.action.AddPublishingAction">
+            <forward name="add" path="/success.jsp"/>
+        </action>
+
+        <action input="/index.jsp"
+                path="/DeleteBook"
+                name="DeleteBookForm"
+                type="myApp.controllers.action.DeleteBookAction">
+            <forward name="delete" path="/success.jsp"/>
+        </action>
+
     </action-mappings>
 
     <message-resources parameter="ApplicationResources" />

@@ -50,7 +50,13 @@
             <%=book.getPublishing().getName()%>
         </td>
         <td>
-            <button onclick="window.location.href='book.jsp?bookName=<%=book.getTitle()%>'">Open</button>
+            <button onclick="window.location.href='book.jsp?bookId=<%=book.getBookId()%>'">Edit</button>
+        </td>
+        <td>
+            <html:form action="/DeleteBook" method="post">
+                <html:hidden property="bookId" name="DeleteBookForm" value="<%=String.valueOf(book.getBookId())%>"/>
+                <html:submit value="Delete"/>
+            </html:form>
         </td>
     </tr>
 <%
@@ -59,7 +65,7 @@
 %>
 </table>
 <a href="newBook.jsp">Add new book</a><br>
-<a href="author.jsp">Add new author</a><br>
-<a href="publishing.jsp">Add new publishing</a>
+<a href="newAuthor.jsp">Add new author</a><br>
+<a href="newPublishing.jsp">Add new publishing</a>
 </body>
 </html>

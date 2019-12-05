@@ -1,15 +1,19 @@
-package myApp.controllers;
+package myApp.controllers.form;
 
+import myApp.controllers.BookFormInterface;
+import myApp.model.BookValidation;
 import myApp.utils.HibernateUtil;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 import org.hibernate.Session;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Calendar;
 import java.util.List;
 
-public class AddBookForm extends org.apache.struts.action.ActionForm {
+/**
+ * New books fields and validate his with BookValidation.validateBook
+ */
+
+public class AddBookForm extends org.apache.struts.action.ActionForm implements BookFormInterface {
 	private String title;
 	private String year;
 	private String cost;
@@ -30,26 +34,7 @@ public class AddBookForm extends org.apache.struts.action.ActionForm {
 	public ActionErrors validate(ActionMapping mapping,
 								 HttpServletRequest request)
 	{
-		ActionErrors errors = new ActionErrors();
-		int formYear;
-		float formCost;
-		try {
-			formYear = Integer.parseInt(getYear());
-			formCost = Float.parseFloat(getCost());
-			if (formYear < 1753 || formYear > Calendar.getInstance().get(Calendar.YEAR)) {
-				errors.add("year", new ActionMessage("incorrect.year"));
-			}
-			if (formCost < 0) {
-				errors.add("cost", new ActionMessage("negative.cost"));
-			}
-		} catch (Exception e) {
-			errors.add("numbers", new ActionMessage("parse.error"));
-		}
-		if (title.length() == 0 || year.length() == 0 || publishing.length() == 0) {
-			errors.add("length", new ActionMessage("zero.params"));
-			return errors;
-		}
-		return errors;
+		return BookValidation.validateBook(this);
 	}
 
 	public String getTitle() {

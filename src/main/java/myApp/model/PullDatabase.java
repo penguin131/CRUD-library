@@ -2,8 +2,11 @@ package myApp.model;
 
 import myApp.utils.HibernateUtil;
 import org.hibernate.Session;
-
 import java.util.List;
+
+/**
+ * Get entities object for ID.
+ */
 
 public class PullDatabase {
 	public static AuthorsEntity getAuthorForId(int authorID) {
@@ -24,13 +27,27 @@ public class PullDatabase {
 		final Session session = HibernateUtil.getHibernateSession();
 		session.beginTransaction();
 		PublishingEntity publishing = null;
-		List publishings = session
+		List pubs = session
 				.createQuery("from PublishingEntity where publishingID="+publishingId)
 				.list();
-		if (publishings.size() > 0) {
-			publishing = (PublishingEntity) publishings.get(0);
+		if (pubs.size() > 0) {
+			publishing = (PublishingEntity) pubs.get(0);
 		}
 		session.close();
 		return publishing;
+	}
+
+	public static BooksEntity getBookForId(int bookId) {
+		final Session session = HibernateUtil.getHibernateSession();
+		session.beginTransaction();
+		BooksEntity book = null;
+		List books = session
+				.createQuery("from BooksEntity where bookId="+bookId)
+				.list();
+		if (books.size() > 0) {
+			book = (BooksEntity) books.get(0);
+		}
+		session.close();
+		return book;
 	}
 }

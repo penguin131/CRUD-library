@@ -1,5 +1,6 @@
-package myApp.controllers;
+package myApp.controllers.action;
 
+import myApp.controllers.form.AddBookForm;
 import myApp.model.AuthorsEntity;
 import myApp.model.BooksEntity;
 import myApp.model.PublishingEntity;
@@ -13,7 +14,9 @@ import org.hibernate.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//add new book to database. Author and publishing checked in AddBookForm
+/**
+ * Add new book to database. Author and publishing from database.
+ */
 public class AddBookAction extends Action {
 
 	@Override

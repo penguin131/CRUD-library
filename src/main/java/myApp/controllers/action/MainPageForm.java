@@ -1,14 +1,16 @@
-package myApp.controllers;
+package myApp.controllers.action;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
-
 import javax.servlet.http.HttpServletRequest;
+
+/**
+ * Read sort param.
+ */
 
 public class MainPageForm extends org.apache.struts.action.ActionForm {
 	private String sortParam;
-	private String bookName;
 
 	@Override
 	public ActionErrors validate(ActionMapping mapping,
@@ -27,13 +29,5 @@ public class MainPageForm extends org.apache.struts.action.ActionForm {
 
 	public void setSortParam(String sortParam) {
 		this.sortParam = sortParam;
-	}
-
-	public String getBookName() {
-		return bookName;
-	}
-
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
 	}
 }

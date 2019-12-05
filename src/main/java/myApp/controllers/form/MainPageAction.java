@@ -1,5 +1,6 @@
-package myApp.controllers;
+package myApp.controllers.form;
 
+import myApp.controllers.action.MainPageForm;
 import myApp.utils.HibernateUtil;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -9,6 +10,10 @@ import org.hibernate.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+
+/**
+ * Select list of all books.
+ */
 
 public class MainPageAction extends Action {
 
