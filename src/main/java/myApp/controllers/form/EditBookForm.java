@@ -37,7 +37,7 @@ public class EditBookForm extends org.apache.struts.action.ActionForm implements
 	public ActionErrors validate(ActionMapping mapping,
 								 HttpServletRequest request)
 	{
-		
+
 		return BookValidation.validateBook(this);
 	}
 
