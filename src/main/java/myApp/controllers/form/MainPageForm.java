@@ -1,4 +1,4 @@
-package myApp.controllers.action;
+package myApp.controllers.form;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;

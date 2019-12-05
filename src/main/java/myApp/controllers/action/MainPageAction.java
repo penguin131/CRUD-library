@@ -1,6 +1,6 @@
-package myApp.controllers.form;
+package myApp.controllers.action;
 
-import myApp.controllers.action.MainPageForm;
+import myApp.controllers.form.MainPageForm;
 import myApp.utils.HibernateUtil;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;

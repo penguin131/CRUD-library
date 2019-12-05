@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Read and validate book fields, check book id.
+ * Read and validate book fields. BOOK_ID CHECKED INTO book.jsp
  */
 
 public class EditBookForm extends org.apache.struts.action.ActionForm implements BookFormInterface {
@@ -37,11 +37,8 @@ public class EditBookForm extends org.apache.struts.action.ActionForm implements
 	public ActionErrors validate(ActionMapping mapping,
 								 HttpServletRequest request)
 	{
-		ActionErrors errors = BookValidation.validateBook(this);
-		if (PullDatabase.getBookForId(Integer.parseInt(bookId)) == null) {
-			errors.add("wtf", new ActionMessage("wtf"));
-		}
-		return errors;
+		
+		return BookValidation.validateBook(this);
 	}
 
 	public String getTitle() {
