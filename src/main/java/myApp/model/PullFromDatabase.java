@@ -8,7 +8,7 @@ import java.util.List;
  * Get entities object for ID.
  */
 
-public class PullDatabase {
+public class PullFromDatabase {
 	public static AuthorsEntity getAuthorForId(int authorID) {
 		final Session session = HibernateUtil.getHibernateSession();
 		session.beginTransaction();

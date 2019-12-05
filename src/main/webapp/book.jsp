@@ -1,5 +1,5 @@
 <%@ page import="myApp.model.BooksEntity" %>
-<%@ page import="myApp.model.PullDatabase" %>
+<%@ page import="myApp.model.PullFromDatabase" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -11,7 +11,7 @@
 <%
     BooksEntity currentBook;
     try {
-        currentBook = PullDatabase.getBookForId(Integer.parseInt(request.getParameter("bookId")));
+        currentBook = PullFromDatabase.getBookForId(Integer.parseInt(request.getParameter("bookId")));
     } catch (Exception ex) {
         return;
     }

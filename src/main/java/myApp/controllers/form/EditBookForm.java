@@ -2,11 +2,9 @@ package myApp.controllers.form;
 
 import myApp.controllers.BookFormInterface;
 import myApp.model.BookValidation;
-import myApp.model.PullDatabase;
 import myApp.utils.HibernateUtil;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 import org.hibernate.Session;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

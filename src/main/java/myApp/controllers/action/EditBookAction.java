@@ -2,7 +2,7 @@ package myApp.controllers.action;
 
 import myApp.controllers.form.EditBookForm;
 import myApp.model.BooksEntity;
-import myApp.model.PullDatabase;
+import myApp.model.PullFromDatabase;
 import myApp.utils.HibernateUtil;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -30,8 +30,8 @@ public class EditBookAction extends Action {
 					.createQuery("from BooksEntity where bookId="+Integer.parseInt(editBookForm.getBookId()))
 					.list()
 					.get(0);
-			currentBook.setAuthor(PullDatabase.getAuthorForId(Integer.parseInt(editBookForm.getAuthor())));
-			currentBook.setPublishing(PullDatabase.getPublishingForId(Integer.parseInt(editBookForm.getPublishing())));
+			currentBook.setAuthor(PullFromDatabase.getAuthorForId(Integer.parseInt(editBookForm.getAuthor())));
+			currentBook.setPublishing(PullFromDatabase.getPublishingForId(Integer.parseInt(editBookForm.getPublishing())));
 			currentBook.setYear(Integer.parseInt(editBookForm.getYear()));
 			currentBook.setCost(Float.parseFloat(editBookForm.getCost()));
 			currentBook.setTitle(editBookForm.getTitle());

@@ -1,7 +1,6 @@
 package myApp.controllers.form;
 
-import myApp.model.BookValidation;
-import myApp.model.PullDatabase;
+import myApp.model.PullFromDatabase;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
@@ -29,7 +28,7 @@ public class DeleteBookForm extends org.apache.struts.action.ActionForm {
 	{
 		ActionErrors errors = new ActionErrors();
 		try {
-			PullDatabase.getBookForId(Integer.parseInt(bookId));
+			PullFromDatabase.getBookForId(Integer.parseInt(bookId));
 		} catch (Exception ex) {
 			errors.add("wtf", new ActionMessage("wtf"));
 		}
