@@ -1,13 +1,14 @@
 package myApp.controllers.form;
 
+import myApp.controllers.AuthorPublishingList;
 import myApp.controllers.BookFormInterface;
-import myApp.model.BookValidation;
-import myApp.utils.HibernateUtil;
+import myApp.controllers.BookValidation;
+import myApp.model.AuthorsEntity;
+import myApp.model.PublishingEntity;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.hibernate.Session;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * New books fields and validate his with BookValidation.validateBook
@@ -19,15 +20,12 @@ public class AddBookForm extends org.apache.struts.action.ActionForm implements 
 	private String cost;
 	private String author;
 	private String publishing;
-	private List authorList;
-	private List publishingList;
+	private ArrayList<AuthorsEntity> authorList;
+	private ArrayList<PublishingEntity> publishingList;
 
 	public AddBookForm() {
-		final Session session1 = HibernateUtil.getHibernateSession();
-		session1.beginTransaction();
-		authorList = session1.createQuery("from AuthorsEntity order by name").list();
-		publishingList = session1.createQuery("from PublishingEntity order by name").list();
-		session1.close();
+		authorList = AuthorPublishingList.getAuthorList();
+		publishingList = AuthorPublishingList.getPublishingList();
 	}
 
 	@Override
@@ -77,19 +75,19 @@ public class AddBookForm extends org.apache.struts.action.ActionForm implements 
 		this.publishing = publishing;
 	}
 
-	public List getAuthorList() {
+	public ArrayList<AuthorsEntity> getAuthorList() {
 		return authorList;
 	}
 
-	public void setAuthorList(List authorList) {
+	public void setAuthorList(ArrayList<AuthorsEntity> authorList) {
 		this.authorList = authorList;
 	}
 
-	public List getPublishingList() {
+	public ArrayList<PublishingEntity> getPublishingList() {
 		return publishingList;
 	}
 
-	public void setPublishingList(List publishingList) {
+	public void setPublishingList(ArrayList<PublishingEntity> publishingList) {
 		this.publishingList = publishingList;
 	}
 }

@@ -4,6 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <link href="css/validation.css" rel="stylesheet" type="text/css">
+<link href="css/index.css" rel="stylesheet" type="text/css">
 <head>
     <title>book</title>
 </head>
@@ -22,27 +23,32 @@
 Fill new book form:<br>
 <html:form action="/EditBook" method="post">
     <table>
-        <tr><td class="failValidation"><html:errors property="numbers" /></td></tr>
-        <tr><td class="failValidation"><html:errors property="length" /></td></tr>
+        <h4 class="failValidation"><html:errors property="numbers" /></h4>
+        <h4 class="failValidation"><html:errors property="length" /></h4>
+        <h4 class="failValidation"><html:errors property="year" /></h4>
+        <h4 class="failValidation"><html:errors property="cost" /></h4>
         <tr>
+            <td/>
             <td>Old params</td>
             <td>New params</td>
         </tr>
         <tr>
+            <td>Title: </td>
             <td><%=currentBook.getTitle()%></td>
-            <td>Title: <html:text name="EditBookForm" property="title"/></td>
+            <td><html:text name="EditBookForm" property="title"/></td>
         </tr>
         <tr>
+            <td>Publishing year: </td>
             <td><%=String.valueOf(currentBook.getYear())%></td>
-            <td>Publishing year: <html:text name="EditBookForm" property="year"/></td>
-            <td class="failValidation"><html:errors property="year" /></td>
+            <td><html:text name="EditBookForm" property="year"/></td>
         </tr>
         <tr>
+            <td>Cost: </td>
             <td><%=String.valueOf(currentBook.getCost())%></td>
-            <td>Cost: <html:text name="EditBookForm" property="cost"/></td>
-            <td class="failValidation"><html:errors property="cost" /></td>
+            <td><html:text name="EditBookForm" property="cost"/></td>
         </tr>
         <tr>
+            <td/>
             <td><%=String.valueOf(currentBook.getAuthor().getName())%></td>
             <td>
                 <html:select property="author" >
@@ -52,6 +58,7 @@ Fill new book form:<br>
             </td>
         </tr>
         <tr>
+            <td/>
             <td><%=String.valueOf(currentBook.getPublishing().getName())%></td>
             <td>
                 <html:select property="publishing" >

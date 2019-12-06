@@ -1,12 +1,12 @@
 package myApp.controllers.form;
 
+import myApp.controllers.AuthorPublishingList;
 import myApp.controllers.BookFormInterface;
-import myApp.model.BookValidation;
-import myApp.utils.HibernateUtil;
+import myApp.controllers.BookValidation;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.hibernate.Session;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,23 +19,19 @@ public class EditBookForm extends org.apache.struts.action.ActionForm implements
 	private String cost;
 	private String author;
 	private String publishing;
-	private List authorList;
-	private List publishingList;
+	private ArrayList authorList;
+	private ArrayList publishingList;
 	private String bookId;
 
 	public EditBookForm() {
-		final Session session1 = HibernateUtil.getHibernateSession();
-		session1.beginTransaction();
-		authorList = session1.createQuery("from AuthorsEntity order by name").list();
-		publishingList = session1.createQuery("from PublishingEntity order by name").list();
-		session1.close();
+		authorList = AuthorPublishingList.getAuthorList();
+		publishingList = AuthorPublishingList.getPublishingList();
 	}
 
 	@Override
 	public ActionErrors validate(ActionMapping mapping,
 								 HttpServletRequest request)
 	{
-
 		return BookValidation.validateBook(this);
 	}
 
@@ -79,19 +75,19 @@ public class EditBookForm extends org.apache.struts.action.ActionForm implements
 		this.publishing = publishing;
 	}
 
-	public List getAuthorList() {
+	public ArrayList getAuthorList() {
 		return authorList;
 	}
 
-	public void setAuthorList(List authorList) {
+	public void setAuthorList(ArrayList authorList) {
 		this.authorList = authorList;
 	}
 
-	public List getPublishingList() {
+	public ArrayList getPublishingList() {
 		return publishingList;
 	}
 
-	public void setPublishingList(List publishingList) {
+	public void setPublishingList(ArrayList publishingList) {
 		this.publishingList = publishingList;
 	}
 
