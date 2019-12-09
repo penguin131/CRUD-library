@@ -5,7 +5,7 @@ import org.apache.struts.action.ActionMessage;
 import java.util.Calendar;
 
 /**
- * Book form validation for AddBookAction and EditBookAction through BookFormInterface. BookID CHECKED INTO book.jsp!
+ * Book form validation for AddBookAction and EditBookAction through BookFormInterface. BookID CHECKED INTO newBook.jsp!
  */
 
 public class BookValidation {

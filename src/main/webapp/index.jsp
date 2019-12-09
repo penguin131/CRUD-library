@@ -1,5 +1,8 @@
 <%@ page import="myApp.model.BooksEntity" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="org.hibernate.Session" %>
+<%@ page import="myApp.utils.HibernateUtil" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -11,15 +14,11 @@
 </head>
 <body>
 <h1>Welcome to super-puper Library!</h1><br>
-<html:form action="/Main" method="post">
-    <html:select property="sortParam" name="MainPageForm">
-        <html:option value="ASC">Ascending</html:option>
-        <html:option value="DESC">Descending</html:option>
-    </html:select>
-    <html:submit value="Show"/>
-</html:form>
 <%
-    ArrayList<?> books = (ArrayList<?>) request.getAttribute("books");
+    final Session session1 = HibernateUtil.getHibernateSession();
+    session1.beginTransaction();
+    List books = session1.createQuery("from BooksEntity order by title").list();
+    session1.close();
     if (books != null) {
 %>
 <table>
@@ -50,7 +49,7 @@
             <%=book.getPublishing().getName()%>
         </td>
         <td>
-            <button onclick="window.location.href='book.jsp?bookId=<%=book.getBookId()%>'">Edit</button>
+            <button onclick="window.location.href='newBook.jsp?bookId=<%=book.getBookId()%>'">Edit</button>
         </td>
         <td>
             <html:form action="/DeleteBook" method="post">

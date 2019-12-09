@@ -3,6 +3,8 @@ package myApp.controllers.form;
 import myApp.controllers.AuthorPublishingList;
 import myApp.controllers.BookFormInterface;
 import myApp.controllers.BookValidation;
+import myApp.model.AuthorsEntity;
+import myApp.model.PublishingEntity;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Read and validate book fields. BOOK_ID CHECKED INTO book.jsp
+ * Read and validate book fields. BOOK_ID CHECKED INTO newBook.jsp
  */
 
 public class EditBookForm extends org.apache.struts.action.ActionForm implements BookFormInterface {
@@ -19,8 +21,8 @@ public class EditBookForm extends org.apache.struts.action.ActionForm implements
 	private String cost;
 	private String author;
 	private String publishing;
-	private ArrayList authorList;
-	private ArrayList publishingList;
+	private ArrayList<AuthorsEntity> authorList;
+	private ArrayList<PublishingEntity> publishingList;
 	private String bookId;
 
 	public EditBookForm() {
@@ -75,19 +77,19 @@ public class EditBookForm extends org.apache.struts.action.ActionForm implements
 		this.publishing = publishing;
 	}
 
-	public ArrayList getAuthorList() {
+	public ArrayList<AuthorsEntity> getAuthorList() {
 		return authorList;
 	}
 
-	public void setAuthorList(ArrayList authorList) {
+	public void setAuthorList(ArrayList<AuthorsEntity> authorList) {
 		this.authorList = authorList;
 	}
 
-	public ArrayList getPublishingList() {
+	public ArrayList<PublishingEntity> getPublishingList() {
 		return publishingList;
 	}
 
-	public void setPublishingList(ArrayList publishingList) {
+	public void setPublishingList(ArrayList<PublishingEntity> publishingList) {
 		this.publishingList = publishingList;
 	}
 

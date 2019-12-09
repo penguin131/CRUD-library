@@ -6,7 +6,6 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="MainPageForm" type="myApp.controllers.form.MainPageForm"/>
         <form-bean name="EditBookForm" type="myApp.controllers.form.EditBookForm"/>
         <form-bean name="AddBookForm" type="myApp.controllers.form.AddBookForm"/>
         <form-bean name="AddAuthorForm" type="myApp.controllers.form.AddAuthorForm"/>
@@ -15,12 +14,6 @@
     </form-beans>
 
     <action-mappings>
-        <action path="/Main"
-                name="MainPageForm"
-                type="myApp.controllers.action.MainPageAction">
-            <forward name="main" path="/index.jsp"/>
-        </action>
-
         <action input="/book.jsp"
                 path="/EditBook"
                 name="EditBookForm"
