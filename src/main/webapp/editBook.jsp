@@ -59,7 +59,7 @@ Fill new book form:<br>
             <td>
                 <div class="current"><%=String.valueOf(currentBook.getAuthor().getName())%></div>
                 <div class="field" style="display: none">
-                    <html:select property="author" >
+                    <html:select property="author" value="<%=String.valueOf(currentBook.getAuthor().getAuthorId())%>">
                         <html:optionsCollection name="EditBookForm" property="authorList"
                                                 label="name" value="authorId" />
                     </html:select>
@@ -71,7 +71,7 @@ Fill new book form:<br>
             <td>
                 <div class="current"><%=String.valueOf(currentBook.getPublishing().getName())%></div>
                 <div class="field" style="display: none">
-                    <html:select property="publishing" >
+                    <html:select property="publishing" value="<%=String.valueOf(currentBook.getPublishing().getPublishingId())%>">
                         <html:optionsCollection name="EditBookForm" property="publishingList"
                                                 label="name" value="publishingId" />
                     </html:select>
