@@ -87,9 +87,9 @@ Fill new book form:<br>
         <html:submit value="Save"/>
         <input type="button" alt="close" id="x-mark" class="modify"/>
     </div>
+    <h4 style="color: crimson">Empty fields will not change!</h4>
 </html:form>
 <h4 class="failValidation"><html:errors property="numbers" /></h4>
-<h4 class="failValidation"><html:errors property="length" /></h4>
 <h4 class="failValidation"><html:errors property="year" /></h4>
 <h4 class="failValidation"><html:errors property="cost" /></h4>
 <script src="javaScript/editBook.js"></script>
