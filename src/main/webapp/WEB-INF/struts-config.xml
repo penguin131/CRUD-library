@@ -14,14 +14,14 @@
     </form-beans>
 
     <action-mappings>
-        <action input="/book.jsp"
+        <action input="/editBook.jsp"
                 path="/EditBook"
                 name="EditBookForm"
                 type="myApp.controllers.action.EditBookAction">
             <forward name="edit" path="/success.jsp"/>
         </action>
 
-        <action input="/newBook.jsp"
+        <action input="/createBook.jsp"
                 path="/AddBook"
                 name="AddBookForm"
                 type="myApp.controllers.action.AddBookAction">

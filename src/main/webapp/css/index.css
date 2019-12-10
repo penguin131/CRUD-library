@@ -1,3 +1,24 @@
-table, th, td {
-    border: 1px solid black;
+.edit {
+    height: 60px;
+}
+
+table, tr, td, th {
+    border: 2px solid black;
+}
+
+td {
+    width: 200px;
+    padding-left: 10px;
+    background: #D8E6F3;
+}
+
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+}
+th {
+    background: #AFCDE7;
+    color: white;
+    padding: 10px 20px;
 }

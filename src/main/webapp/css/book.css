@@ -1,0 +1,6 @@
+#x-mark {
+    background: url('../img/x-mark.png') no-repeat center;
+    width: 18px;
+    height: 18px;
+    background-size : cover;
+}

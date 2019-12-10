@@ -21,14 +21,16 @@
     session1.close();
     if (books != null) {
 %>
+<h2>Books:</h2>
 <table>
-    <tr><th>Books:</th></tr>
     <tr>
-        <td>Title</td>
-        <td>Cost</td>
-        <td>Year</td>
-        <td>Author</td>
-        <td>Publishing</td>
+        <th>Title</th>
+        <th>Cost</th>
+        <th>Year</th>
+        <th>Author</th>
+        <th>Publishing</th>
+        <th/>
+        <th/>
     </tr>
 <%for (Object o : books) {
     BooksEntity book = (BooksEntity) o;%>
@@ -48,10 +50,10 @@
         <td>
             <%=book.getPublishing().getName()%>
         </td>
-        <td>
-            <button onclick="window.location.href='newBook.jsp?bookId=<%=book.getBookId()%>'">Edit</button>
+        <td style="align-content: center; width: 60px">
+            <button onclick="window.location.href='editBook.jsp?bookId=<%=book.getBookId()%>'">Edit</button>
         </td>
-        <td>
+        <td style="align-content: center; width: 60px">
             <html:form action="/DeleteBook" method="post">
                 <html:hidden property="bookId" name="DeleteBookForm" value="<%=String.valueOf(book.getBookId())%>"/>
                 <html:submit value="Delete"/>
@@ -63,7 +65,7 @@
     }
 %>
 </table>
-<a href="newBook.jsp">Add new book</a><br>
+<a href="createBook.jsp">Add new book</a><br>
 <a href="newAuthor.jsp">Add new author</a><br>
 <a href="newPublishing.jsp">Add new publishing</a>
 </body>

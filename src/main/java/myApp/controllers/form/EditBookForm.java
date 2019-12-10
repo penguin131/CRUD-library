@@ -9,10 +9,9 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Read and validate book fields. BOOK_ID CHECKED INTO newBook.jsp
+ * Read and validate book fields. BOOK_ID CHECKED INTO editBook.jsp
  */
 
 public class EditBookForm extends org.apache.struts.action.ActionForm implements BookFormInterface {
@@ -32,9 +31,8 @@ public class EditBookForm extends org.apache.struts.action.ActionForm implements
 
 	@Override
 	public ActionErrors validate(ActionMapping mapping,
-								 HttpServletRequest request)
-	{
-		return BookValidation.validateBook(this);
+								 HttpServletRequest request) {
+		return BookValidation.validateBook(this, false);
 	}
 
 	public String getTitle() {
