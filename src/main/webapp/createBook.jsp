@@ -2,13 +2,15 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<link href="css/validation.css" rel="stylesheet" type="text/css">
-<link href="css/index.css" rel="stylesheet" type="text/css">
 <head>
     <title>book</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="css/validation.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<a href="index.jsp">Go to main page</a><br>
+<hr/>
 Fill new book form:<br>
 <html:form action="/AddBook" method="post">
     <table>
@@ -51,6 +53,5 @@ Fill new book form:<br>
     <h4 class="failValidation"><html:errors property="cost" /></h4>
     <h4 class="failValidation"><html:errors property="year" /></h4>
 </logic:messagesPresent>
-<a href="index.jsp">Go to main page</a><br>
 </body>
 </html>

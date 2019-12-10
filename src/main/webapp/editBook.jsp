@@ -3,12 +3,12 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<link href="css/validation.css" rel="stylesheet" type="text/css">
-<link href="css/book.css" rel="stylesheet" type="text/css">
-<link href="css/index.css" rel="stylesheet" type="text/css">
 <head>
     <title>book</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/validation.css" rel="stylesheet" type="text/css">
+    <link href="css/book.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <%

@@ -4,18 +4,16 @@
 <link href="css/validation.css" rel="stylesheet" type="text/css">
 <head>
     <title>New author</title>
+    <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<a href="index.jsp">Go to main page</a><br>
+<hr/>
 Fill new publishing form:<br>
 <html:form action="/AddPublishing" method="post">
-    <table>
-        <tr>
-            <td>Enter publishing name: <html:text property="name" name="AddPublishingForm" /></td>
-            <td class="failValidation"><html:errors property="length"/></td>
-        </tr>
-    </table>
+    Enter publishing name: <html:text property="name" name="AddPublishingForm" />
+    <h4 class="failValidation"><html:errors property="length"/></h4>
     <html:submit value="Add"/>
 </html:form>
-<a href="index.jsp">Go to main page</a><br>
 </body>
 </html>

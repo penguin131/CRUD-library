@@ -6,11 +6,11 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<link href="css/index.css" rel="stylesheet" type="text/css">
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Library</title>
+    <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h1>Welcome to super-puper Library!</h1><br>

@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Success</title>
+    <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 OK
