@@ -7,7 +7,7 @@
     <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<a href="index.jsp">Go to main page</a><br>
+<input type="button" onclick="window.location.href = 'index.jsp';" value="Go to main page"/>
 <hr/>
 Fill new publishing form:<br>
 <html:form action="/AddPublishing" method="post">

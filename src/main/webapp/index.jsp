@@ -1,5 +1,4 @@
 <%@ page import="myApp.model.BooksEntity" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="org.hibernate.Session" %>
 <%@ page import="myApp.utils.HibernateUtil" %>
 <%@ page import="java.util.List" %>
@@ -56,7 +55,9 @@
         <td style="align-content: center; width: 60px">
             <html:form action="/DeleteBook" method="post">
                 <html:hidden property="bookId" name="DeleteBookForm" value="<%=String.valueOf(book.getBookId())%>"/>
-                <html:submit value="Delete"/>
+                <div >
+                    <html:submit value="Delete" onclick="javascript:return confirm('Are you sure want to delete book?');"/>
+                </div>
             </html:form>
         </td>
     </tr>
@@ -65,8 +66,8 @@
     }
 %>
 </table>
-<a href="createBook.jsp">Add new book</a><br>
-<a href="newAuthor.jsp">Add new author</a><br>
-<a href="newPublishing.jsp">Add new publishing</a>
+<input type="button" onclick="window.location.href = 'createBook.jsp';" value="Add new book"/>
+<input type="button" onclick="window.location.href = 'createAuthor.jsp';" value="Add new author"/>
+<input type="button" onclick="window.location.href = 'createPublishing.jsp';" value="Add new publishing"/>
 </body>
 </html>

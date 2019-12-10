@@ -22,7 +22,7 @@
     	return;
     }
 %>
-<a href="index.jsp">Go to main page</a><br>
+<input type="button" onclick="window.location.href = 'index.jsp';" value="Go to main page"/>
 <hr/>
 Fill new book form:<br>
 <html:form action="/EditBook" method="post">

@@ -190,6 +190,7 @@
                 <version>2.2</version>
                 <configuration>
                     <port>8888</port>
+                    <uriEncoding>utf-8</uriEncoding>
                     <path>/</path>
                 </configuration>
             </plugin>

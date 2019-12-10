@@ -8,6 +8,7 @@ import myApp.model.PublishingEntity;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 /**
@@ -30,8 +31,12 @@ public class AddBookForm extends org.apache.struts.action.ActionForm implements 
 
 	@Override
 	public ActionErrors validate(ActionMapping mapping,
-								 HttpServletRequest request)
-	{
+								 HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		return BookValidation.validateBook(this, true);
 	}
 

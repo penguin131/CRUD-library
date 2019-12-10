@@ -12,6 +12,7 @@ import org.apache.struts.action.ActionMapping;
 import org.hibernate.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class AddAuthorAction extends Action {
 	public ActionForward execute(ActionMapping mapping,
 								 ActionForm form,
 								 HttpServletRequest request,
-								 HttpServletResponse response) {
+								 HttpServletResponse response) throws UnsupportedEncodingException {
 		AddAuthorForm addAuthorForm = (AddAuthorForm) form;
 		final Session session = HibernateUtil.getHibernateSession();
 		session.beginTransaction();
@@ -34,6 +35,7 @@ public class AddAuthorAction extends Action {
 		session.getTransaction().commit();
 		session.close();
 		AuthorPublishingList.getAuthorList().add(authorToAdded);
+		request.setCharacterEncoding("UTF-8");
 		return mapping.findForward("add");
 	}
 }

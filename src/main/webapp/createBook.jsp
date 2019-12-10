@@ -1,15 +1,16 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html encoding="UTF-8" >
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>book</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="css/validation.css" rel="stylesheet" type="text/css">
     <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<a href="index.jsp">Go to main page</a><br>
+<input type="button" onclick="window.location.href = 'index.jsp';" value="Go to main page"/>
 <hr/>
 Fill new book form:<br>
 <html:form action="/AddBook" method="post">
