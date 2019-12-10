@@ -30,34 +30,34 @@ Fill new book form:<br>
         <tr class="edit">
             <td>Title: </td>
             <td>
-                <div><%=currentBook.getTitle()%></div>
+                <div class="current"><%=currentBook.getTitle()%></div>
                 <div class="field" style="display: none">
-                    <html:text name="EditBookForm" property="title"/>
+                    <html:text name="EditBookForm" property="title" value="<%=currentBook.getTitle()%>"/>
                 </div>
             </td>
         </tr>
         <tr class="edit">
             <td>Publishing year: </td>
             <td>
-                <div><%=String.valueOf(currentBook.getYear())%></div>
+                <div class="current"><%=String.valueOf(currentBook.getYear())%></div>
                 <div class="field" style="display: none">
-                    <html:text name="EditBookForm" property="year"/>
+                    <html:text name="EditBookForm" property="year" value="<%=String.valueOf(currentBook.getYear())%>"/>
                 </div>
             </td>
         </tr>
         <tr class="edit">
             <td>Cost: </td>
             <td>
-                <div><%=String.valueOf(currentBook.getCost())%></div>
+                <div class="current"><%=String.valueOf(currentBook.getCost())%></div>
                 <div class="field" style="display: none">
-                    <html:text name="EditBookForm" property="cost"/>
+                    <html:text name="EditBookForm" property="cost" value="<%=String.valueOf(currentBook.getCost())%>"/>
                 </div>
             </td>
         </tr>
         <tr class="edit">
             <td>Author</td>
             <td>
-                <div><%=String.valueOf(currentBook.getAuthor().getName())%></div>
+                <div class="current"><%=String.valueOf(currentBook.getAuthor().getName())%></div>
                 <div class="field" style="display: none">
                     <html:select property="author" >
                         <html:optionsCollection name="EditBookForm" property="authorList"
@@ -69,7 +69,7 @@ Fill new book form:<br>
         <tr class="edit">
             <td>Publishing</td>
             <td>
-                <div><%=String.valueOf(currentBook.getPublishing().getName())%></div>
+                <div class="current"><%=String.valueOf(currentBook.getPublishing().getName())%></div>
                 <div class="field" style="display: none">
                     <html:select property="publishing" >
                         <html:optionsCollection name="EditBookForm" property="publishingList"
