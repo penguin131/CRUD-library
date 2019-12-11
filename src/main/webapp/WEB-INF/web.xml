@@ -5,6 +5,25 @@
 	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>CRUD-library</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-role>
+        <role-name>*</role-name>
+    </security-role>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>CRUD-library</realm-name>
+    </login-config>
+
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>myApp.utils.CharacterEncodingFilter</filter-class>
@@ -61,5 +80,4 @@
             <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
         </taglib>
     </jsp-config>
-
 </web-app>
