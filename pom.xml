@@ -155,9 +155,6 @@
                     <port>8888</port>
                     <uriEncoding>utf-8</uriEncoding>
                     <path>/</path>
-                    <systemProperties>
-                        <java.security.auth.login.config>${basedir}/conf/jaas.config</java.security.auth.login.config>
-                    </systemProperties>
                 </configuration>
             </plugin>
             <plugin>

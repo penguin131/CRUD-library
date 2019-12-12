@@ -28,8 +28,10 @@ public class LibraryLoginModule implements LoginModule {
 		subject.getPrincipals().add(new Role("admin"));
 	}
 
-	private void authenticate() {
-		// TODO check if user and password are valid
+	private void authenticate() throws LoginException {
+		if (!name.equals("sa") || !password.equals("sa")) {
+			throw new LoginException();
+		}
 		subject.getPrincipals().add(new User(name));
 	}
 

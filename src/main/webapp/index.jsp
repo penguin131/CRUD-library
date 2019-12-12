@@ -20,6 +20,9 @@
     session1.close();
     if (books != null) {
 %>
+<input type="button" onclick="window.location.href = 'createBook.jsp';" value="Add new book"/><br><br>
+<input type="button" onclick="window.location.href = 'createAuthor.jsp';" value="Add new author"/><br><br>
+<input type="button" onclick="window.location.href = 'createPublishing.jsp';" value="Add new publishing"/><br>
 <h2>Books:</h2>
 <table>
     <tr>
@@ -66,8 +69,6 @@
     }
 %>
 </table>
-<input type="button" onclick="window.location.href = 'createBook.jsp';" value="Add new book"/>
-<input type="button" onclick="window.location.href = 'createAuthor.jsp';" value="Add new author"/>
-<input type="button" onclick="window.location.href = 'createPublishing.jsp';" value="Add new publishing"/>
+<input type="button" onclick="window.location.href = 'logout.jsp';" value="Logout" style="position: absolute; top: 10px; right: 10px;"/>
 </body>
 </html>
