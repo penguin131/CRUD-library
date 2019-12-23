@@ -20,6 +20,7 @@ import java.util.List;
 /**
  * Add new author to dictionary. Author has only name.
  */
+
 public class AddAuthorAction extends Action {
 	@Override
 	public ActionForward execute(ActionMapping mapping,

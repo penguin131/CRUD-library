@@ -84,6 +84,10 @@ public class BooksEntity {
 	public int hashCode() {
 		int result = bookId;
 		result = 31 * result + (title != null ? title.hashCode() : 0);
+		result = 31 * result + year;
+		result = (int) (31 * result + cost);
+		result = 31 * result + author.hashCode();
+		result = 31 * result + publishing.hashCode();
 		return result;
 	}
 }

@@ -8,7 +8,7 @@ import java.io.IOException;
 public class CharacterEncodingFilter implements Filter {
 	private FilterConfig fc;
 
-	public void init(FilterConfig filterConfig) throws ServletException {
+	public void init(FilterConfig filterConfig) {
 
 	}
 

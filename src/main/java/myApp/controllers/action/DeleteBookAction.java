@@ -24,7 +24,7 @@ public class DeleteBookAction extends Action {
 		DeleteBookForm deleteBookForm = (DeleteBookForm) form;
 		final Session session = HibernateUtil.getHibernateSession();
 		session.beginTransaction();
-		BooksEntity book = session.load(BooksEntity.class, Integer.parseInt(deleteBookForm.getBookId()));
+		BooksEntity book = (BooksEntity) session.load(BooksEntity.class, Integer.parseInt(deleteBookForm.getBookId()));
 		session.delete(book);
 		session.getTransaction().commit();
 		session.close();
