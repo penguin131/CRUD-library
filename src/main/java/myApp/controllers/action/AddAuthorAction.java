@@ -2,7 +2,6 @@ package myApp.controllers.action;
 
 import myApp.controllers.AuthorPublishingList;
 import myApp.controllers.form.AddAuthorForm;
-import myApp.controllers.form.EditBookForm;
 import myApp.model.AuthorsEntity;
 import myApp.utils.HibernateUtil;
 import org.apache.struts.action.Action;
@@ -13,15 +12,13 @@ import org.hibernate.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Add new author to dictionary. Author has only name.
  */
 
 public class AddAuthorAction extends Action {
+
 	@Override
 	public ActionForward execute(ActionMapping mapping,
 								 ActionForm form,
