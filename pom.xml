@@ -212,8 +212,11 @@
                     <outputDirectory>${basedir}/target/classes</outputDirectory>
                     <resources>
                         <resource>
-                            <directory>src/ttt</directory>
+                            <directory>/</directory>
                             <filtering>true</filtering>
+                            <includes>
+                                <include>config.xml</include>
+                            </includes>
                         </resource>
                         <resource>
                             <directory>src/main/resources</directory>
