@@ -2,8 +2,11 @@ package myApp.controllers;
 
 import myApp.model.AuthorsEntity;
 import myApp.model.PublishingEntity;
+import myApp.utils.DbConfiguration;
 import myApp.utils.HibernateUtil;
 import org.hibernate.Session;
+
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 
 /**
@@ -20,11 +23,11 @@ public class AuthorPublishingList {
 
 	@SuppressWarnings("unchecked")
 	private static void downloadLists() {
-		final Session session1 = HibernateUtil.getHibernateSession();
-		session1.beginTransaction();
-		authorList = (ArrayList<AuthorsEntity>) session1.createQuery("from AuthorsEntity order by name").list();
-		publishingList = (ArrayList<PublishingEntity>) session1.createQuery("from PublishingEntity order by name").list();
-		session1.close();
+		EntityManager em = DbConfiguration.getEm();
+		em.getTransaction().begin();
+		authorList = (ArrayList<AuthorsEntity>) em.createQuery("from AuthorsEntity").getResultList();
+		publishingList = (ArrayList<PublishingEntity>) em.createQuery("from PublishingEntity").getResultList();
+		em.getTransaction().commit();
 	}
 
 	public static ArrayList<AuthorsEntity> getAuthorList() {

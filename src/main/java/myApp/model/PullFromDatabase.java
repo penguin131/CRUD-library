@@ -1,7 +1,11 @@
 package myApp.model;
 
+import myApp.utils.DbConfiguration;
 import myApp.utils.HibernateUtil;
+import org.apache.tomcat.jni.Error;
 import org.hibernate.Session;
+
+import javax.persistence.EntityManager;
 import java.util.List;
 
 /**
@@ -9,45 +13,42 @@ import java.util.List;
  */
 
 public class PullFromDatabase {
-	public static AuthorsEntity getAuthorForId(int authorID) {
-		final Session session = HibernateUtil.getHibernateSession();
-		session.beginTransaction();
-		AuthorsEntity author = null;
-		List authors = session
-				.createQuery("from AuthorsEntity where authorID=" + authorID)
-				.list();
-		if (authors.size() > 0) {
-			author = (AuthorsEntity) authors.get(0);
+	public static AuthorsEntity getAuthorForId(int authorID) throws Exception {
+		AuthorsEntity author;
+		try {
+			EntityManager em = DbConfiguration.getEm();
+			em.getTransaction().begin();
+			author = (AuthorsEntity) em.createQuery("from AuthorsEntity where authorId="+authorID).getResultList().get(0);
+			em.getTransaction().commit();
+		} catch (ArrayIndexOutOfBoundsException ex) {
+			throw new Exception(ex);
 		}
-		session.close();
 		return author;
 	}
 
-	public static PublishingEntity getPublishingForId(int publishingId) {
-		final Session session = HibernateUtil.getHibernateSession();
-		session.beginTransaction();
-		PublishingEntity publishing = null;
-		List pubs = session
-				.createQuery("from PublishingEntity where publishingID="+publishingId)
-				.list();
-		if (pubs.size() > 0) {
-			publishing = (PublishingEntity) pubs.get(0);
+	public static PublishingEntity getPublishingForId(int publishingId) throws Exception {
+		PublishingEntity publishing;
+		try {
+			EntityManager em = DbConfiguration.getEm();
+			em.getTransaction().begin();
+			publishing = (PublishingEntity) em.createQuery("from PublishingEntity where publishingId="+publishingId).getResultList().get(0);
+			em.getTransaction().commit();
+		} catch (ArrayIndexOutOfBoundsException ex) {
+			throw new Exception(ex);
 		}
-		session.close();
 		return publishing;
 	}
 
-	public static BooksEntity getBookForId(int bookId) {
-		final Session session = HibernateUtil.getHibernateSession();
-		session.beginTransaction();
-		BooksEntity book = null;
-		List books = session
-				.createQuery("from BooksEntity where bookId="+bookId)
-				.list();
-		if (books.size() > 0) {
-			book = (BooksEntity) books.get(0);
+	public static BooksEntity getBookForId(int bookId) throws Exception {
+		BooksEntity book;
+		try {
+			EntityManager em = DbConfiguration.getEm();
+			em.getTransaction().begin();
+			book = (BooksEntity) em.createQuery("from BooksEntity where bookId="+bookId).getResultList().get(0);
+			em.getTransaction().commit();
+		} catch (ArrayIndexOutOfBoundsException ex) {
+			throw new Exception(ex);
 		}
-		session.close();
 		return book;
 	}
 }

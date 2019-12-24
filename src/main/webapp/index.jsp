@@ -1,7 +1,7 @@
 <%@ page import="myApp.model.BooksEntity" %>
-<%@ page import="org.hibernate.Session" %>
-<%@ page import="myApp.utils.HibernateUtil" %>
 <%@ page import="java.util.List" %>
+<%@ page import="myApp.utils.DbConfiguration" %>
+<%@ page import="javax.persistence.EntityManager" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -14,10 +14,10 @@
 <body>
 <h1>Welcome to super-puper Library!</h1><br>
 <%
-    final Session session1 = HibernateUtil.getHibernateSession();
-    session1.beginTransaction();
-    List books = session1.createQuery("from BooksEntity order by title").list();
-    session1.close();
+    EntityManager em = DbConfiguration.getEm();
+    em.getTransaction().begin();
+    List books = em.createQuery("from BooksEntity order by title").getResultList();
+    em.getTransaction().commit();
     if (books != null) {
 %>
 <input type="button" onclick="window.location.href = 'createBook.jsp';" value="Add new book"/><br><br>

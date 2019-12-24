@@ -22,7 +22,7 @@ public class HibernateUtil {
     }
 
     public static Session getHibernateSession() {
-        Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+        Configuration configuration = new Configuration().configure("old/hibernate.cfg.xml");
         Properties properties = configuration.getProperties();
         properties.setProperty("hibernate.connection.password", DbConfiguration.getPassword());
         properties.setProperty("hibernate.connection.username", DbConfiguration.getUserName());

@@ -5,12 +5,15 @@ import myApp.model.AuthorsEntity;
 import myApp.model.BooksEntity;
 import myApp.model.PublishingEntity;
 import myApp.model.PullFromDatabase;
+import myApp.utils.DbConfiguration;
 import myApp.utils.HibernateUtil;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.hibernate.Session;
+
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,10 +27,10 @@ public class AddBookAction extends Action {
 	public ActionForward execute(ActionMapping mapping,
 								 ActionForm form,
 								 HttpServletRequest request,
-								 HttpServletResponse response) {
+								 HttpServletResponse response) throws Exception {
 		AddBookForm addBookForm = (AddBookForm) form;
-		final Session session = HibernateUtil.getHibernateSession();
-		session.beginTransaction();
+		EntityManager em = DbConfiguration.getEm();
+
 		BooksEntity bookToAdded = new BooksEntity();
 		AuthorsEntity author = PullFromDatabase.getAuthorForId(Integer.parseInt(addBookForm.getAuthor()));
 		PublishingEntity publishing = PullFromDatabase.getPublishingForId(Integer.parseInt(addBookForm.getPublishing()));
@@ -36,9 +39,10 @@ public class AddBookAction extends Action {
 		bookToAdded.setYear(Integer.parseInt(addBookForm.getYear()));
 		bookToAdded.setAuthor(author);
 		bookToAdded.setPublishing(publishing);
-		session.save(bookToAdded);
-		session.getTransaction().commit();
-		session.close();
+		em.getTransaction().begin();
+		em.persist(bookToAdded);
+		em.flush();
+		em.getTransaction().commit();
 		return mapping.findForward("add");
 	}
 }

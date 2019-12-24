@@ -3,12 +3,15 @@ package myApp.controllers.action;
 import myApp.controllers.AuthorPublishingList;
 import myApp.controllers.form.AddAuthorForm;
 import myApp.model.AuthorsEntity;
+import myApp.utils.DbConfiguration;
 import myApp.utils.HibernateUtil;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.hibernate.Session;
+
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
@@ -25,15 +28,16 @@ public class AddAuthorAction extends Action {
 								 HttpServletRequest request,
 								 HttpServletResponse response) throws UnsupportedEncodingException {
 		AddAuthorForm addAuthorForm = (AddAuthorForm) form;
-		final Session session = HibernateUtil.getHibernateSession();
-		session.beginTransaction();
+
 		AuthorsEntity authorToAdded = new AuthorsEntity();
 		authorToAdded.setName(addAuthorForm.getName());
-		session.save(authorToAdded);
-		session.getTransaction().commit();
-		session.close();
+		EntityManager em = DbConfiguration.getEm();
+		em.getTransaction().begin();
+		em.persist(authorToAdded);
+		em.flush();
+		em.getTransaction().commit();
+
 		AuthorPublishingList.getAuthorList().add(authorToAdded);
-		request.setCharacterEncoding("UTF-8");
 		return mapping.findForward("add");
 	}
 }

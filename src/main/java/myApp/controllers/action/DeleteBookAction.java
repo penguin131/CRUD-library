@@ -2,12 +2,15 @@ package myApp.controllers.action;
 
 import myApp.controllers.form.DeleteBookForm;
 import myApp.model.BooksEntity;
+import myApp.utils.DbConfiguration;
 import myApp.utils.HibernateUtil;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.hibernate.Session;
+
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,12 +25,11 @@ public class DeleteBookAction extends Action {
 								 HttpServletRequest request,
 								 HttpServletResponse response) {
 		DeleteBookForm deleteBookForm = (DeleteBookForm) form;
-		final Session session = HibernateUtil.getHibernateSession();
-		session.beginTransaction();
-		BooksEntity book = (BooksEntity) session.load(BooksEntity.class, Integer.parseInt(deleteBookForm.getBookId()));
-		session.delete(book);
-		session.getTransaction().commit();
-		session.close();
+		EntityManager em = DbConfiguration.getEm();
+		BooksEntity delBook = em.find(BooksEntity.class, Integer.parseInt(deleteBookForm.getBookId()));
+		em.getTransaction().begin();
+		em.remove(delBook);
+		em.getTransaction().commit();
 		return mapping.findForward("delete");
 	}
 }
