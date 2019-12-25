@@ -1,6 +1,6 @@
 package myApp.controllers.form;
 
-import myApp.model.PullFromDatabase;
+import myApp.utils.PullFromDatabase;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;

@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="myApp.utils.DbConfiguration" %>
 <%@ page import="javax.persistence.EntityManager" %>
+<%@ page import="myApp.utils.PullFromDatabase" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -14,10 +15,12 @@
 <body>
 <h1>Welcome to super-puper Library!</h1><br>
 <%
-    EntityManager em = DbConfiguration.getEm();
-    em.getTransaction().begin();
-    List books = em.createQuery("from BooksEntity order by title").getResultList();
-    em.getTransaction().commit();
+    List books = null;
+    try {
+        books = PullFromDatabase.getBooks();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
     if (books != null) {
 %>
 <input type="button" onclick="window.location.href = 'createBook.jsp';" value="Add new book"/><br><br>

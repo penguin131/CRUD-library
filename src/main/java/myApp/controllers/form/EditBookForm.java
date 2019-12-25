@@ -7,6 +7,7 @@ import myApp.model.AuthorsEntity;
 import myApp.model.PublishingEntity;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 

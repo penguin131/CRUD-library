@@ -3,8 +3,6 @@ package myApp.controllers;
 import myApp.model.AuthorsEntity;
 import myApp.model.PublishingEntity;
 import myApp.utils.DbConfiguration;
-import myApp.utils.HibernateUtil;
-import org.hibernate.Session;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;

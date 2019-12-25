@@ -1,5 +1,5 @@
 <%@ page import="myApp.model.BooksEntity" %>
-<%@ page import="myApp.model.PullFromDatabase" %>
+<%@ page import="myApp.utils.PullFromDatabase" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

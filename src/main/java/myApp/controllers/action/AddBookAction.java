@@ -1,27 +1,29 @@
 package myApp.controllers.action;
 
 import myApp.controllers.form.AddBookForm;
-import myApp.model.AuthorsEntity;
-import myApp.model.BooksEntity;
-import myApp.model.PublishingEntity;
-import myApp.model.PullFromDatabase;
-import myApp.utils.DbConfiguration;
-import myApp.utils.HibernateUtil;
+import myApp.model.*;
+import myApp.utils.PullFromDatabase;
+import myApp.utils.UploadInterfaceDao;
+import myApp.utils.UploadToDatabaseDao;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.hibernate.Session;
 
-import javax.persistence.EntityManager;
+import javax.ejb.EJB;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Properties;
 
 /**
  * Add new book to database. Author and publishing from database.
  */
 
 public class AddBookAction extends Action {
+	private UploadInterfaceDao uploadToDatabase;
 
 	@Override
 	public ActionForward execute(ActionMapping mapping,
@@ -29,9 +31,8 @@ public class AddBookAction extends Action {
 								 HttpServletRequest request,
 								 HttpServletResponse response) throws Exception {
 		AddBookForm addBookForm = (AddBookForm) form;
-		EntityManager em = DbConfiguration.getEm();
-
 		BooksEntity bookToAdded = new BooksEntity();
+
 		AuthorsEntity author = PullFromDatabase.getAuthorForId(Integer.parseInt(addBookForm.getAuthor()));
 		PublishingEntity publishing = PullFromDatabase.getPublishingForId(Integer.parseInt(addBookForm.getPublishing()));
 		bookToAdded.setTitle(addBookForm.getTitle());
@@ -39,10 +40,21 @@ public class AddBookAction extends Action {
 		bookToAdded.setYear(Integer.parseInt(addBookForm.getYear()));
 		bookToAdded.setAuthor(author);
 		bookToAdded.setPublishing(publishing);
-		em.getTransaction().begin();
-		em.persist(bookToAdded);
-		em.flush();
-		em.getTransaction().commit();
+		uploadToDatabase.commitBook(bookToAdded);
 		return mapping.findForward("add");
+	}
+
+	public AddBookAction() {
+		try
+		{
+			Properties properties = new Properties();
+			properties.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.apache.openejb.core.LocalInitialContextFactory");
+			Context context = new InitialContext(properties);
+			uploadToDatabase = (UploadInterfaceDao) context
+					.lookup(UploadToDatabaseDao.LocalJNDIName);
+		} catch (NamingException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 }

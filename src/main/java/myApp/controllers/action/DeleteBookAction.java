@@ -3,12 +3,10 @@ package myApp.controllers.action;
 import myApp.controllers.form.DeleteBookForm;
 import myApp.model.BooksEntity;
 import myApp.utils.DbConfiguration;
-import myApp.utils.HibernateUtil;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.hibernate.Session;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
